@@ -57,15 +57,15 @@ int main(int argc, char** argv)
     dnshdr->numq = htons(1);
     dnshdr->numa = 0;
 
-   // printf("wwwwwww");
+   
     strcpy(buf + sizeof(DNS_HDR) + 1, argv[1]);
 
     p = buf + sizeof(DNS_HDR) + 1;
     i = 0;
-   // printf("333333");
+   
     while (p < (buf + sizeof(DNS_HDR) + 1 + strlen(argv[1])))
     {
-    //    printf("x");
+    
         if ( *p == '.')
         {
             *(p - i - 1) = i;
