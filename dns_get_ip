@@ -47,11 +47,7 @@ int main(int argc, char** argv)
 
     servaddr.sin_port = htons(SRV_PORT);
 
-    /*if (connect(clifd, (struct sockaddr *)&servaddr, socklen) < 0)
-     * *     {
-       *               printf( " can't connect to %s!\n ", argv[ 1 ]);
-        *                         return -1;
-           *                             }*/
+    
 
 
 
@@ -90,10 +86,10 @@ int main(int argc, char** argv)
 
 
     len = sendto(clifd, buf, sizeof(DNS_HDR) + sizeof(DNS_QER) + strlen(argv[1]) + 2, 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
-    //len = send(clifd, buf, sizeof(DNS_HDR) + sizeof(DNS_QER) + strlen(argv[1]) + 2, 0);
+    
     i = sizeof(struct sockaddr_in);
     len = recvfrom(clifd, buf, BUF_SIZE, 0, (struct sockaddr *)&servaddr, &i);
-    //len = recv(clifd, buf, BUF_SIZE, 0);
+    
     if (len < 0)
     {
         printf("recv error\n");
